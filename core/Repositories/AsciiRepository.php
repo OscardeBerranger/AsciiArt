@@ -23,9 +23,9 @@ class AsciiRepository extends AbstractRepository
     public function update(Ascii $ascii){
         $requete = $this->pdo->prepare("UPDATE {$this->tableName} SET code = :code, nom= :nom WHERE id = :id");
         $requete->execute([
-            'id'=>$ascii->getId(),
+            'code'=>$ascii->getCode(),
             'nom'=>$ascii->getNom(),
-            'code'=>$ascii->getCode()
+            'id'=>$ascii->getId()
         ]);
     }
 }

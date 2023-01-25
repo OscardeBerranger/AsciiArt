@@ -46,7 +46,7 @@ class Ascii extends AbstractEntity
      */
     public function setNom(string $nom): void
     {
-        $this->title = $nom;
+        $this->nom = $nom;
     }
 
     /**
@@ -55,5 +55,9 @@ class Ascii extends AbstractEntity
     public function setCode(string $code): void
     {
         $this->code = $code;
+    }
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 }
