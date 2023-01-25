@@ -2,9 +2,10 @@
 
 namespace Repositories;
 
+use Attributes\TargetEntity;
 use Entity\Comment;
 use Entity\Post;
-
+#[TargetEntity(entityName: Comment::class)]
 class CommentRepository extends AbstractRepository
 {
 
@@ -17,9 +18,6 @@ class CommentRepository extends AbstractRepository
         $comments = $query->fetchAll();
         return $comments;
     }
-
-
-
 
     public function insert(Comment $comment){
         $request = $this->pdo->prepare("INSERT INTO {$this->tableName} SET post_id = :post_id, content = :content");

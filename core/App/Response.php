@@ -7,7 +7,7 @@ class Response
 
     public static function redirect(? array $params = null){
 
-        $url = "index.php";
+        $url = "index.html.php";
 
         if($params){
 

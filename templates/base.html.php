@@ -36,7 +36,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                    <a href="index.php?type=ascii&action=create" class="nav-link">Ascii art</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">

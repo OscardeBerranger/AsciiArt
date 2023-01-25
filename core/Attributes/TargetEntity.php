@@ -2,11 +2,9 @@
 
 namespace Attributes;
 
-
 use Attribute;
 
 #[Attribute]
-
 class TargetEntity
 {
     private string $entityName;

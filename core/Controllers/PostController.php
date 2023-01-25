@@ -4,6 +4,7 @@ namespace Controllers;
 
 
 
+use App\File;
 use Attributes\DefaultEntity;
 use Entity\Comment;
 use Entity\Post;
@@ -18,15 +19,10 @@ class PostController extends AbstractController
 
 
     public function index(){
-
-
-
         return $this->render("posts/index", [
             "posts"=>$this->repository->findAll(),
             "pageTitle"=>"accueil du blog"
         ]);
-
-
     }
 
     public function show()
@@ -82,15 +78,9 @@ class PostController extends AbstractController
             // reparer ca la juste en dessous
 
            return $this->redirect();
-
-
-
-
     }
 
     public function create(){
-
-
 
         $title = null;
         $content=null;
@@ -110,8 +100,6 @@ class PostController extends AbstractController
             $post->setContent($content);
 
 
-
-
             $this->repository->insert($post);
 
 
@@ -128,17 +116,11 @@ class PostController extends AbstractController
             $id = $_GET['id'];
         }
         if($id){
-
-
-
             $post = $this->repository->findById($id);
-
             if(!$post){
                 return $this->redirect();
             }
-
         }
-
         $id = null;
         $content = null;
         $title = null;
@@ -153,7 +135,11 @@ class PostController extends AbstractController
 
         if($content && $id && $title){
 
+            $image = new File('postImage');
 
+            if ($image->isImage()){
+                $image->upload();
+            }
 
             $post = $this->repository->findById($id);
 
@@ -168,17 +154,9 @@ class PostController extends AbstractController
                 "id"=>$post->getId()
             ]);
 
-
-
-
         }
         return $this->render("posts/update",
             ["post"=>$post,
                 "pageTitle"=>"modifier le post"]);
-
-
     }
-
-
-
 }

@@ -15,7 +15,6 @@ class Post extends AbstractEntity
 
 
 
-
     private int $id;
     private string $title;
     private string $content;
@@ -61,7 +60,5 @@ class Post extends AbstractEntity
     {
         $this->content = $content;
     }
-
-
 
 }

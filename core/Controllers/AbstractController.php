@@ -7,20 +7,18 @@ use Attributes\DefaultEntity;
 use Attributes\TargetEntity;
 use Attributes\TargetRepository;
 
+
 class AbstractController
 {
 
 
     protected object $defaultEntity;
 
-    protected string $defaultEntityName;
 
     protected $repository;
 
     public function __construct()
     {
-        $this->defaultEntity = new $this->defaultEntityName();
-
         $this->repository = $this->getRepository($this->resolveDefaultEntityName());
     }
 
@@ -33,7 +31,6 @@ class AbstractController
     }
 
     protected function getRepository($entityName){
-
         $reflect = new \ReflectionClass($entityName);  //$attributes
 
         $attributes = $reflect->getAttributes(TargetRepository::class);
@@ -41,7 +38,6 @@ class AbstractController
         $repoName = $attributes[0]->getArguments()["repositoryName"];
 
         return new $repoName();
-
     }
 
 

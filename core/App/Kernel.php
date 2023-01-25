@@ -7,7 +7,7 @@ class Kernel
 
     public static function run(){
 
-        $type = "post";
+        $type = "ascii";
         $action = "index";
 
         if(!empty($_GET['type'])){ $type = $_GET['type']; };
@@ -20,9 +20,6 @@ class Kernel
         $controller = new $controllerName();
 
         $controller->$action();
-
-
-
 
         }
 
